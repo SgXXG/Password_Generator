@@ -85,6 +85,9 @@ namespace PasswordGenerator
         }
     }
 
+    /// <summary>
+    /// Represents the password data used for generating passwords.
+    /// </summary>
     public static class PasswordData
     {
         public static char[] _password = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ~!@#$%^&*()-_+={}|}:;'<>?,./".ToCharArray();
@@ -97,6 +100,10 @@ namespace PasswordGenerator
     /// </summary>
     public static class PasswordUtils
     {
+        /// <summary>
+        /// Recursively generates all possible combinations of a password using a brute force approach.
+        /// </summary>
+        /// <param name="result">The current combination of characters being generated.</param>
         public static void BruteForce(string result = "")
         {
             if (result.Length == PasswordData._length)
