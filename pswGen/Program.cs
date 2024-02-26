@@ -17,8 +17,14 @@ namespace PasswordGenerator
             Console.WriteLine("Password Generator");
             Console.WriteLine("Enter the length of the password: ");
             int length = Convert.ToInt32(Console.ReadLine());
+
+            PasswordData._length = length;
+            
             Console.WriteLine("Password: " + Password.Generate(length));
             Console.WriteLine("Strong Password: " + StrongPassword.Generate(length));
+            Console.ReadLine();
+            System.Console.WriteLine("Brute Force: ");
+            PasswordUtils.BruteForce();
             Console.ReadLine();
         }
     }
@@ -79,11 +85,32 @@ namespace PasswordGenerator
         }
     }
 
+    public static class PasswordData
+    {
+        public static char[] _password = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ~!@#$%^&*()-_+={}|}:;'<>?,./".ToCharArray();
+        public static int _length;
+    }
+
+
     /// <summary>
     /// Utility class for manipulating passwords.
     /// </summary>
     public static class PasswordUtils
     {
+        public static void BruteForce(string result = "")
+        {
+            if (result.Length == PasswordData._length)
+            {
+                System.Console.WriteLine(result);
+            }  
+            else
+            {
+                for (int i = 0; i < PasswordData._password.Length; i++)
+                {
+                    BruteForce(result + PasswordData._password[i]);
+                }
+            }
+        }
         /// <summary>
         /// Converts the given password to uppercase.
         /// </summary>
