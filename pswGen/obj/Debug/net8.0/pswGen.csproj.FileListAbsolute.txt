@@ -1,0 +1,15 @@
+c:\sgxxg\Projects\code\pswGen\pswGen\bin\Debug\net8.0\pswGen.exe
+c:\sgxxg\Projects\code\pswGen\pswGen\bin\Debug\net8.0\pswGen.deps.json
+c:\sgxxg\Projects\code\pswGen\pswGen\bin\Debug\net8.0\pswGen.runtimeconfig.json
+c:\sgxxg\Projects\code\pswGen\pswGen\bin\Debug\net8.0\pswGen.dll
+c:\sgxxg\Projects\code\pswGen\pswGen\bin\Debug\net8.0\pswGen.pdb
+c:\sgxxg\Projects\code\pswGen\pswGen\obj\Debug\net8.0\pswGen.GeneratedMSBuildEditorConfig.editorconfig
+c:\sgxxg\Projects\code\pswGen\pswGen\obj\Debug\net8.0\pswGen.AssemblyInfoInputs.cache
+c:\sgxxg\Projects\code\pswGen\pswGen\obj\Debug\net8.0\pswGen.AssemblyInfo.cs
+c:\sgxxg\Projects\code\pswGen\pswGen\obj\Debug\net8.0\pswGen.csproj.CoreCompileInputs.cache
+c:\sgxxg\Projects\code\pswGen\pswGen\obj\Debug\net8.0\pswGen.sourcelink.json
+c:\sgxxg\Projects\code\pswGen\pswGen\obj\Debug\net8.0\pswGen.dll
+c:\sgxxg\Projects\code\pswGen\pswGen\obj\Debug\net8.0\refint\pswGen.dll
+c:\sgxxg\Projects\code\pswGen\pswGen\obj\Debug\net8.0\pswGen.pdb
+c:\sgxxg\Projects\code\pswGen\pswGen\obj\Debug\net8.0\pswGen.genruntimeconfig.cache
+c:\sgxxg\Projects\code\pswGen\pswGen\obj\Debug\net8.0\ref\pswGen.dll
