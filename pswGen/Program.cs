@@ -23,85 +23,85 @@ namespace PasswordGenerator
         }
     }
 
+    /// <summary>
+    /// Represents a utility class for generating passwords.
+    /// </summary>
+    public static class Password
+    {
+        private static readonly string _password = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
         /// <summary>
-        /// Represents a utility class for generating passwords.
+        /// Generates a random password of the specified length.
         /// </summary>
-        public static class Password
+        /// <param name="length">The length of the password to generate.</param>
+        /// <returns>A randomly generated password.</returns>
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when the specified length is greater than the available characters in the password pool.</exception>
+        public static string Generate(int length)
         {
-            private static readonly string _password = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(length, _password.Length, nameof(length));
 
-            /// <summary>
-            /// Generates a random password of the specified length.
-            /// </summary>
-            /// <param name="length">The length of the password to generate.</param>
-            /// <returns>A randomly generated password.</returns>
-            /// <exception cref="ArgumentOutOfRangeException">Thrown when the specified length is greater than the available characters in the password pool.</exception>
-            public static string Generate(int length)
+            Random _randomPassword = new Random();
+            string password = string.Empty;
+            for (int i = 0; i < length; i++)
             {
-                ArgumentOutOfRangeException.ThrowIfGreaterThan(length, _password.Length, nameof(length));
-
-                Random _randomPassword = new Random();
-                string password = string.Empty;
-                for (int i = 0; i < length; i++)
-                {
-                    password += _password[_randomPassword.Next(_password.Length)];
-                }
-
-                return password;
+                password += _password[_randomPassword.Next(_password.Length)];
             }
+
+            return password;
         }
+    }
     
+    /// <summary>
+    /// Represents a utility class for generating strong passwords.
+    /// </summary>
+    public static class StrongPassword
+    {
+    private static readonly string _password = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ~!@#$%^&*()-_=+{}|}:;'<>?,./";
+
         /// <summary>
-        /// Represents a utility class for generating strong passwords.
+        /// Generates a strong password of the specified length.
         /// </summary>
-        public static class StrongPassword
+        /// <param name="length">The length of the password to generate.</param>
+        /// <returns>A randomly generated strong password.</returns>
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when the specified length is greater than the available characters in the password pool.</exception>
+        public static string Generate(int length)
         {
-        private static readonly string _password = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ~!@#$%^&*()-_=+{}|}:;'<>?,./";
+            ArgumentOutOfRangeException.ThrowIfGreaterThan(length, _password.Length, nameof(length));
 
-            /// <summary>
-            /// Generates a strong password of the specified length.
-            /// </summary>
-            /// <param name="length">The length of the password to generate.</param>
-            /// <returns>A randomly generated strong password.</returns>
-            /// <exception cref="ArgumentOutOfRangeException">Thrown when the specified length is greater than the available characters in the password pool.</exception>
-            public static string Generate(int length)
+            Random _randomPassword = new Random();
+            string password = string.Empty;
+            for (int i = 0; i < length; i++)
             {
-                ArgumentOutOfRangeException.ThrowIfGreaterThan(length, _password.Length, nameof(length));
-
-                Random _randomPassword = new Random();
-                string password = string.Empty;
-                for (int i = 0; i < length; i++)
-                {
-                    password += _password[_randomPassword.Next(_password.Length)];
-                }
-
-                return password;
+                password += _password[_randomPassword.Next(_password.Length)];
             }
+
+            return password;
+        }
+    }
+
+    /// <summary>
+    /// Utility class for manipulating passwords.
+    /// </summary>
+    public static class PasswordUtils
+    {
+        /// <summary>
+        /// Converts the given password to uppercase.
+        /// </summary>
+        /// <param name="password">The password to convert.</param>
+        /// <returns>The converted password in uppercase.</returns>
+        public static string ToUpperPassword(string password)
+        {
+            return password.ToUpper();
         }
 
         /// <summary>
-        /// Utility class for manipulating passwords.
+        /// Converts the given password to lowercase.
         /// </summary>
-        public static class PasswordUtils
+        /// <param name="password">The password to convert.</param>
+        /// <returns>The converted password in lowercase.</returns>
+        public static string ToLowerPassword(string password)
         {
-            /// <summary>
-            /// Converts the given password to uppercase.
-            /// </summary>
-            /// <param name="password">The password to convert.</param>
-            /// <returns>The converted password in uppercase.</returns>
-            public static string ToUpperPassword(string password)
-            {
-                return password.ToUpper();
-            }
-
-            /// <summary>
-            /// Converts the given password to lowercase.
-            /// </summary>
-            /// <param name="password">The password to convert.</param>
-            /// <returns>The converted password in lowercase.</returns>
-            public static string ToLowerPassword(string password)
-            {
-                return password.ToLower();
-            }
+            return password.ToLower();
         }
+    }
 }
