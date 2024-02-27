@@ -20,6 +20,9 @@ namespace PasswordGenerator
         public static void Main(string[] args)
         {
             Console.WriteLine("Password Generator");
+
+            fastBruteForce.BruteForce();
+
             Console.WriteLine("Enter the length of the password: ");
             int length = Convert.ToInt32(Console.ReadLine());
 
@@ -34,6 +37,60 @@ namespace PasswordGenerator
 
             Vigener.CipherVigener(length);
             Console.ReadLine();
+        }
+    }
+
+    public static class fastBruteForce 
+    {
+        static char[] Match = {'0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j' ,'k','l','m','n','o','p',
+                        'q','r','s','t','u','v','w','x','y','z','A','B','C','D','E','F','G','H','I','J','C','L','M','N','O','P',
+                        'Q','R','S','T','U','V','X','Y','Z','!','?',' ','*','-','+'};
+        static string FindPassword;
+        static int Combi;
+        static string space = " ";
+        static int Characters;
+
+        public static void BruteForce()
+        {
+            int Count;
+            FindPassword = Console.ReadLine();
+            Characters = FindPassword.Length;
+
+            DateTime start = DateTime.Now;
+            start.ToString("yyyy-MM-dd_HH:mm:ss.fff");
+            System.Console.WriteLine("Start Time: " + start);
+
+            for (Count = 0; Count <= 15; Count++)
+            {
+                Recurse(Count, 0, "");
+            }
+        }
+
+        static void Recurse(int Length, int Position, string BaseString)
+        {
+            int Count = 0;
+
+            for (Count = 0; Count < Match.Length; Count++)
+            {
+                Combi++;
+                if (Position < Length - 1)
+                {
+                    Recurse(Length, Position + 1, BaseString + Match[Count]);
+                }
+
+                if (BaseString + Match[Count] == FindPassword)
+                {
+                    System.Console.WriteLine();
+                    Console.WriteLine("Your password is: " + FindPassword);
+                    Console.WriteLine("Your password is: " + Characters + " character(s) long");
+
+                    DateTime end = DateTime.Now;
+                    end.ToString("yyyy-MM-dd_HH:mm:ss");
+                    Console.WriteLine(space);
+                    Console.WriteLine("END:\t{0}\nCombi:\t{1}", end, Combi);
+                    Console.ReadLine();
+                }
+            }           
         }
     }
 
