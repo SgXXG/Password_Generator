@@ -1,9 +1,10 @@
-﻿using System.IO;
-using System.Security.Authentication;
-using System.Text;
+﻿using System.Text;
 
 /// <summary>
 /// Provides classes and methods for generating passwords.
+/// </summary>
+/// <summary>
+/// Represents a namespace for generating passwords and manipulating password data.
 /// </summary>
 namespace PasswordGenerator
 {
@@ -43,6 +44,9 @@ namespace PasswordGenerator
         static List<string> dictionary = new List<string>();
         static Dictionary<string, int> countRefs = new Dictionary<string, int> {};
 
+        /// <summary>
+        /// Initializes the Vigener class by checking the existence of dictionary and output files.
+        /// </summary>
         static Vigener()
         {
             if (!File.Exists(dict))
@@ -58,6 +62,11 @@ namespace PasswordGenerator
             }
         }
 
+        /// <summary>
+        /// Performs the Vigener cipher decryption with a given key length.
+        /// </summary>
+        /// <param name="keyLength">The length of the key to be used for decryption.</param>
+        /// <param name="result">Optional parameter to store the result of the decryption.</param>
         public static void CipherVigener(int keyLength, string result = "")
         {
             string value = "YCUMLEMBAJJOPEEYSPETEOSGFJH";
@@ -124,6 +133,11 @@ namespace PasswordGenerator
             System.Console.WriteLine("");
         }
 
+        /// <summary>
+        /// Checks if a given string contains only letters.
+        /// </summary>
+        /// <param name="s">The string to be checked.</param>
+        /// <returns>True if the string contains only letters, otherwise false.</returns>
         public static bool isAllLeters(string s) 
         {
             foreach(char c in s)
@@ -135,6 +149,12 @@ namespace PasswordGenerator
             return true;
         }
 
+        /// <summary>
+        /// Deciphers the given text using the Vigenere cipher algorithm with the provided key.
+        /// </summary>
+        /// <param name="text">The text to be deciphered.</param>
+        /// <param name="key">The key used for deciphering the text.</param>
+        /// <returns>The deciphered text.</returns>
         static string decipherVigener(string text, string key)
         {
             StringBuilder result = new StringBuilder();
