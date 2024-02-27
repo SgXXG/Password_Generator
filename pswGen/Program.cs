@@ -1,10 +1,7 @@
 ﻿using System.Text;
 
 /// <summary>
-/// Provides classes and methods for generating passwords.
-/// </summary>
-/// <summary>
-/// Represents a namespace for generating passwords and manipulating password data.
+/// Represents a namespace that contains classes for generating passwords and performing password-related operations.
 /// </summary>
 namespace PasswordGenerator
 {
@@ -40,6 +37,9 @@ namespace PasswordGenerator
         }
     }
 
+    /// <summary>
+    /// Represents a class that performs fast brute force password cracking.
+    /// </summary>
     public static class fastBruteForce 
     {
         static char[] Match = {'0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f','g','h','i','j' ,'k','l','m','n','o','p',
@@ -50,6 +50,9 @@ namespace PasswordGenerator
         static string space = " ";
         static int Characters;
 
+        /// <summary>
+        /// Performs a brute force attack to find the password.
+        /// </summary>
         public static void BruteForce()
         {
             int Count;
@@ -66,6 +69,12 @@ namespace PasswordGenerator
             }
         }
 
+        /// <summary>
+        /// Recursively generates combinations of characters and checks if the generated combination matches the desired password.
+        /// </summary>
+        /// <param name="Length">The length of the password.</param>
+        /// <param name="Position">The current position in the password being generated.</param>
+        /// <param name="BaseString">The base string representing the characters generated so far.</param>
         static void Recurse(int Length, int Position, string BaseString)
         {
             int Count = 0;
@@ -94,6 +103,9 @@ namespace PasswordGenerator
         }
     }
 
+    /// <summary>
+    /// Represents the Vigener class for performing Vigener cipher decryption.
+    /// </summary>
     public static class Vigener
     {
         static string dict = @"passwords.txt";
