@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("pswGen")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+282e68adaece7f3becd0fb64354cdd55aeec49f2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6c68af6c3972ebc79129997fc4c2eeb6e7041b50")]
 [assembly: System.Reflection.AssemblyProductAttribute("pswGen")]
 [assembly: System.Reflection.AssemblyTitleAttribute("pswGen")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

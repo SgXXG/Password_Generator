@@ -1,4 +1,8 @@
-﻿/// <summary>
+﻿using System.IO;
+using System.Security.Authentication;
+using System.Text;
+
+/// <summary>
 /// Provides classes and methods for generating passwords.
 /// </summary>
 namespace PasswordGenerator
@@ -26,6 +30,134 @@ namespace PasswordGenerator
             System.Console.WriteLine("Brute Force: ");
             PasswordUtils.BruteForce();
             Console.ReadLine();
+
+            Vigener.CipherVigener(length);
+            Console.ReadLine();
+        }
+    }
+
+    public static class Vigener
+    {
+        static string dict = @"passwords.txt";
+        static string output = @"output.txt";
+        static List<string> dictionary = new List<string>();
+        static Dictionary<string, int> countRefs = new Dictionary<string, int> {};
+
+        static Vigener()
+        {
+            if (!File.Exists(dict))
+            {
+                Console.WriteLine("Dictionary file not found");
+                return;
+            }
+        
+            if (!File.Exists(output))
+            {
+                Console.WriteLine("Output file not found");
+                File.Create(output);
+            }
+        }
+
+        public static void CipherVigener(int keyLength, string result = "")
+        {
+            string value = "YCUMLEMBAJJOPEEYSPETEOSGFJH";
+            string attempt;
+            int counter = 0;
+            double progress = 0, total = 0;
+            int limiter = 2;
+
+            using (StreamReader sr = File.OpenText(dict))
+            {
+                string wordpre = "";
+                while ((wordpre = sr.ReadLine()) != null)
+                {
+                    total += 1;
+                    if (wordpre.Length > limiter)
+                    {
+                        dictionary.Add(wordpre);
+                    }
+                }
+            }     
+
+            using (StreamReader sr = File.OpenText(dict))
+            {
+                string word = "";
+                while ((word = sr.ReadLine()) != null)
+                {
+                    progress += 1;
+                    if (isAllLeters(word))
+                    {
+                        if (word.Length == keyLength)
+                        {
+                            attempt = decipherVigener(value, word);
+                            if (dictionary.Any(attempt.Contains))
+                            {
+                                counter += 1;
+                                System.Console.WriteLine("\r[S] " + word + "\t\t" + attempt);
+                                using (StreamWriter sw = File.AppendText(output))
+                                {
+                                    sw.WriteLine("\r[S]" + word + "\t\t" + attempt);
+                                }
+
+                                countRefs.Add(word, dictionary.Count(s => attempt.Contains(s)));
+                            }
+                        }
+                    }
+
+                    System.Console.Write("\r>{0:n}%", (100/total)*progress);
+                }
+            }
+
+            System.Console.WriteLine("  [Total: {0}]", total);
+            System.Console.WriteLine("");
+
+            System.Console.WriteLine("// ######## ######## ######## //");
+            System.Console.WriteLine(" > MOST PROBABLE KEYS / VALUES");
+            System.Console.WriteLine("// ######## ######## ######## //\n");
+
+            foreach (var item in countRefs.OrderByDescending(r => r.Value).Take(10))
+            {
+                System.Console.WriteLine("KEY {0}, \"{1}\" [{2}]", item.Key, decipherVigener(value, item.Key), item.Value);
+            }
+
+            System.Console.WriteLine("");
+            System.Console.WriteLine("");
+        }
+
+        public static bool isAllLeters(string s) 
+        {
+            foreach(char c in s)
+            {
+                if (!char.IsLetter(c))
+                    return false;
+            }
+
+            return true;
+        }
+
+        static string decipherVigener(string text, string key)
+        {
+            StringBuilder result = new StringBuilder();
+            int keyLength = key.Length;
+            int diff;
+            char decoded;
+
+            text = text.Replace(" ", "").ToLower();
+
+            for (int i = 0; i < text.Length; i++)
+            {
+                diff = text[i] - key[i%keyLength];
+
+                if (diff < 0)
+                {
+                    diff += 26;
+                }
+
+                decoded = (char)(diff + 'a');
+                result.Append(decoded);
+            }
+
+            return result.ToString();
         }
     }
 
